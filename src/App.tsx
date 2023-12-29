@@ -78,7 +78,6 @@ export default function App() {
             {data.weather ? <p className="weather">{data.weather[0].main}</p> : null}
           </div>        
           </div>
-        {data.name != undefined && 
         <div className="bottom">
 
           <div className="feels">
@@ -91,7 +90,6 @@ export default function App() {
             <p>Wind: {data.wind ? <span>{data.wind.speed} km/h</span> : null}</p>
           </div>
         </div>
-        }
         </div>
         </div>
     </>
