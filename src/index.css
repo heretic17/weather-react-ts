@@ -27,13 +27,6 @@
       }
   }
 
-  @media screen and (max-width: 600px) {
-    body {
-      float: none;
-      width: 100%;
-    }
-  }
-
 body {
     padding: 10vh;
     
@@ -82,6 +75,8 @@ h1 {
     right: -90%;
     transform-origin: 0 0;
     transform: rotate(270deg);
+    margin-bottom: 50vh;
+
 }
 
 .location-name {
@@ -117,3 +112,111 @@ span {
     display: flex;
     justify-content: center;
 }
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1920px) {
+    h1 {
+        font-size: 4.5rem;
+    }
+    .location-name {
+        font-size: 6rem;
+    }
+    .bottom {
+        margin: 0 10rem;
+        padding: 1em 3em;
+    }
+    
+    .description {
+        /* padding: 0.5vh; */
+        margin-top: 50vh; /* Adjust this value to move the description lower */
+        padding-right: 50vh;
+      }
+}
+
+@media screen and (max-width: 1080px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    .location-name {
+        font-size: 5rem;
+    }
+    .bottom {
+        margin: 0 5rem;
+        padding: 1em 2em;
+    }
+    .weather {
+        font-size: 3rem;
+    }
+    .description {
+        margin-bottom: 15vh;
+    }
+}
+
+/*Yeni css*/
+@media screen and (max-width: 720px) {
+    body {
+        padding: 5vh;
+        text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    .location-name {
+      font-size: 3rem;
+    }
+    .bottom {
+      margin: 1vh 1rem;
+      padding: 0.5em 0.5em;
+    }
+    .weather {
+      font-size: 2rem;
+    }
+    .search input {
+      width: 90%;
+      font-size: 1rem;
+    }
+    .description {
+        margin-bottom: 15vh;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .bottom {
+      margin: -55vh 1rem;
+      padding: 0.5em 0.5em;
+    }
+    .description {
+        padding: 0.5vh 50vh;
+    }
+  }  
+
+  @media screen and (max-width: 360px) {
+    .bottom {
+      margin: -45vh 1rem;
+      padding: 0.5em 0.5em;
+    }
+    .description {
+        padding: 0.4vh 40vh;
+        
+    }
+  }
+
+  /* Additional styles as needed */
+  .language {
+    margin: 1rem;
+  }
+  
+  .search {
+    margin: 1rem;
+  }
+
+  .top {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .description {
+    /* padding: 0.5vh; */
+    margin-top: 50vh; /* Adjust this value to move the description lower */
+    padding-right: 60vh;
+  }

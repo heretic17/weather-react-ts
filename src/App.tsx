@@ -1,23 +1,23 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 
 export default function App() {
 
   type WeatherData = {
-    main: {
+    main?: {
       humidity: number,
       temp: number,
       feels_like: number
     }
-    name: string,
-    weather: {
+    name?: string,
+    weather?: {
       0: {
         main: string
       }
     }
-    wind: {
+    wind?: {
       speed: number
     }
   }
@@ -25,6 +25,8 @@ export default function App() {
   const [data, setData] = useState<WeatherData>({})
   const [location, setLocation] = useState('')
   const [lang, setLang] = useState('en')
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(true)
+  const [isMobile, setIsMobile] = useState(false);
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&lang=${lang}&appid=5bd661ecd04dc98e3885bac5343473ff&units=metric`
 
@@ -46,7 +48,19 @@ export default function App() {
     const value = e.target.value;
     setLang(value)
   }
+  const handleResize = () => {
+    const keyboardOpen = window.innerHeight < window.screen.height * 0.75;
+    setIsKeyboardOpen(keyboardOpen);
 
+    const mobile = window.innerWidth <= 768;
+    setIsMobile(mobile);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Call the handler immediately to set initial state
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
     return(
     <>
       <div className="language">
@@ -78,7 +92,7 @@ export default function App() {
             {data.weather ? <p className="weather">{data.weather[0].main}</p> : null}
           </div>        
           </div>
-        <div className="bottom">
+        <div className="bottom" style={{ marginBottom: isKeyboardOpen ? '50vh' : '1vh', marginTop: isMobile ? (isKeyboardOpen ? '-50vh' : '-25vh') : '0' }}>
 
           <div className="feels">
             <p>Feels Like: {data.main ? <span>{data.main.feels_like}°C</span> : null}</p>
